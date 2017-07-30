@@ -6,7 +6,18 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+
+import com.google.gson.Gson;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by cookiemouse on 2017/7/21.
@@ -42,6 +53,25 @@ public class CycleProgressView extends View {
         mPaint.setColor(color_default);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(5);
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request request = new Request.Builder().url("http://cookiemouse.cn/test.json").build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result = response.body().string();
+                Gson gson = new Gson();
+                BackBean backBean = gson.fromJson(result, BackBean.class);
+                if (backBean.getCode() == 1){
+                    throw new NullPointerException("pay me back");
+                }
+            }
+        });
     }
 
     @Override

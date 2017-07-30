@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CycleProgress.iml" filepath="$PROJECT_DIR$/CycleProgress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CycleProgressView.iml" filepath="$PROJECT_DIR$/CycleProgressView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cycleprogressview/cycleprogressview.iml" filepath="$PROJECT_DIR$/cycleprogressview/cycleprogressview.iml" />
     </modules>
